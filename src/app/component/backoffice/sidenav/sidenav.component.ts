@@ -32,6 +32,9 @@ export class SidenavComponent implements OnInit {
     if(rutaActual.indexOf("/clientes") !== -1){
       return "clientes";
     }
+    if(rutaActual.indexOf("/configuracion") !== -1){
+      return "configuracion";
+    }
     if(rutaActual.indexOf("/scanner") !== -1 || rutaActual.indexOf("/nueva-venta") !== -1){
       return "scanner";
     }

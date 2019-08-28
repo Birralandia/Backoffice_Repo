@@ -10,13 +10,14 @@ import { NuevaNotificacionComponent } from './component/backoffice/notificacion/
 import { ScancameraComponent } from './component/scancamera/scancamera.component';
 import { NuevoRegistroComponent } from './component/scancamera/nuevo-registro/nuevo-registro.component';
 import { RegistroComponent } from './component/registro/registro.component';
-
+import { ConfiguracionComponent } from './component/backoffice/configuracion/configuracion.component';
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'registro_back', component:RegistroComponent},
   { path: 'backoffice', component: SidenavComponent, children: [
     { path: 'dashboard', component: DashboardComponent},
+    { path: 'configuracion', component: ConfiguracionComponent},
     { path: 'economy', component: ContabilidadComponent},
     { path: 'clientes', component: ClientesComponent},
     { path: 'notificacion', component: NotificacionComponent},

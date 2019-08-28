@@ -27,6 +27,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { RegistroComponent } from './component/registro/registro.component';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { ConfiguracionComponent } from './component/backoffice/configuracion/configuracion.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
     NuevaNotificacionComponent,
     ScancameraComponent,
     NuevoRegistroComponent,
-    RegistroComponent
+    RegistroComponent,
+    ConfiguracionComponent
   ],
   imports: [
     BrowserModule,
