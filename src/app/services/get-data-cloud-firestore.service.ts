@@ -2,21 +2,28 @@ import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument, } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { Cliente } from '../interfaces/cliente';
+import { Observable, Observer } from 'rxjs'
+import { Ventas } from '../interfaces/ventas';
+import { Oferta } from '../interfaces/oferta';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetDataCloudFirestoreService {
  
-  userData: any; // Save logged in user data
+  /** Data to loging  **/
+  userData: any; 
   formData : any;
+  /**                 **/
 
   constructor(
-    public afs: AngularFirestore,   // Inject Firestore service
-    public afAuth: AngularFireAuth, // Inject Firebase auth service
-    public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public afs: AngularFirestore,     // Inject Firestore service
+    public afAuth: AngularFireAuth,   // Inject Firebase auth service
+    public router: Router,            // Route to use dom
+    public ngZone: NgZone             // NgZone service to remove outside scope warning
   ) { 
+    /** Set default value **/
     this.formData = {
       uid: null,
       email: '',
@@ -26,8 +33,11 @@ export class GetDataCloudFirestoreService {
       password: '',
 	    tipoUsuario:''
     }
-     /* Saving user data in localstorage when
-  logged in and setting up null when logged out */
+
+
+  /**  Saving user data in localstorage when
+  logged in and setting up null when logged out **/
+
   this.afAuth.authState.subscribe(user => {
     if (user) {
       this.userData = user;
@@ -37,10 +47,15 @@ export class GetDataCloudFirestoreService {
       localStorage.setItem('user', null);
       JSON.parse(localStorage.getItem('user'));
     }
-  })
+    });
   }
 
-// Sign in with email/password
+
+/**
+ * Sing In user with FirebaseAuth
+ * @param email Email of user
+ * @param password Password of user
+ */
 SignIn(email, password) {
   if (email == "" || email == undefined || password == "" || password == undefined)
     return;
@@ -71,16 +86,15 @@ SignIn(email, password) {
             this.SignIn(email, password)
           }
           break;
-      }; // Tenemos un error constante de EmailVerifed, hasta no solucionarlo, seguimos usando la siguiente linea de codigo.
-
-      //window.alert(error.message)
+      }; 
     })
-
 }
-// const asyncExample = async () => {
-//   return await axios(users)
-// };
-// Sign up with email/passwordResetEmaild
+
+
+/**
+ * Sing Up user with Firebase Auth - Method Asynctro
+ * @param form Need a form data from login form. This method use input name to get value.
+ */
 async SignUp(form) {
   localStorage.setItem('registroCliente', JSON.stringify(form.value));
   this.afAuth.auth.languageCode = 'es';
@@ -97,15 +111,29 @@ async SignUp(form) {
     });
 
 }
-// Send email verfificaiton when new user sign up
+
+
+
+/**
+ * This method is obsolete. But we can use this to send emails in the future.
+ */
 SendVerificationMail() {
   return this.afAuth.auth.currentUser.sendEmailVerification()
     .then(() => {
       this.router.navigate(['verify-email-address']);
     })
 }
-// Reset Forggot password
-ForgotPassword(passwordResetEmail) {
+
+
+
+
+/**
+ * 
+ * Method to update password 
+ * @param passwordResetEmail Get password to update current password when user forgot it.
+ *
+ */
+  ForgotPassword(passwordResetEmail) {
   return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
     .then(() => {
       window.alert('Password reset email sent, check your inbox.');
@@ -113,16 +141,22 @@ ForgotPassword(passwordResetEmail) {
       window.alert(error)
     })
 }
-// Returns true when user is looged in and email is verified
+
+
+/**
+ * Verifi if user is logged. Return true if the user is logged.
+ */
 get isLoggedIn(): boolean {
   const user = JSON.parse(localStorage.getItem('user'));
   return (user !== null && user.emailVerified !== false) ? true : false;
 }
-// Sign in with Google
-//GoogleAuth() {
-//return this.AuthLogin(new auth.GoogleAuthProvider());
-//}
-// Auth logic to run auth providers
+
+
+
+/**
+ * Providers method
+ * @param provider Using providers to login.
+ */
 AuthLogin(provider) {
   return this.afAuth.auth.signInWithPopup(provider)
     .then((result) => {
@@ -134,9 +168,11 @@ AuthLogin(provider) {
       window.alert(error)
     })
 }
-/* Setting up user data when sign in with username/password,
+
+
+/** Setting up user data when sign in with username/password,
 sign up with username/password and sign in with social auth
-provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
+provider in Firestore database using AngularFirestore + AngularFirestoreDocument service **/
 SetUserData(user) {
   const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
   const userData: any = {
@@ -152,12 +188,19 @@ SetUserData(user) {
   })
 }
 
+
+/**
+ * Update password
+ * @param password Password to update current password
+ */
 changePassword(password){
   return this.afAuth.auth.currentUser.updatePassword(password);
 }
 
 
-// Sign out
+/**
+ * Loggout method 
+ */
 SignOut() {
   return this.afAuth.auth.signOut().then(() => {
     localStorage.removeItem('user');
@@ -165,17 +208,39 @@ SignOut() {
   })
 }
 
+
+/*********************+ END METHODS AUTH ************************/
+
+
+/******************** GET METHODS *********************/
+  /**
+   * Get Clients collection. Return Json type Cliente.
+   */
   getClientes(){
       const doc = this.afs.collection('users');
-      return doc.valueChanges();
+      const listClients = doc.valueChanges();
+      return listClients;
   }
 
+  /**
+   * Get Products collection. Return Json type Product
+   */
   getProductos(){
     const doc = this.afs.collection('productos');
-    return doc.valueChanges();
+    const listProducts = doc.valueChanges();
+    return listProducts;
 }
 
-  agregarVenta(venta){
+/*****************************************************/
+
+
+/****************** ADD METHODS DATABASE ************/
+
+/**
+ * Add sale to Data base - Venta Interface
+ * @param venta Get variable of type Ventas.
+ */
+agregarVenta(venta : Ventas){
     const doc = this.afs.collection('ventas');
     doc.add({
       email:venta.email,
@@ -187,7 +252,11 @@ SignOut() {
     })
   }
 
-  agregarPuntos(slug){
+  /**
+   * Add points to  data base - Cliente Interface
+   * @param slug Get variable of type Cliente Interface
+   */
+  agregarPuntos(slug : Cliente){
     const doc = this.afs.collection('users').doc(slug.uid);
     doc.set({
       email:slug.email,
@@ -199,7 +268,11 @@ SignOut() {
     })
   }
 
-  agregarOferta(oferta){
+  /**
+   * Add Offers to data base - Oferta Interface
+   * @param oferta Get variable of type Oferta Interface
+   */
+  agregarOferta(oferta : Oferta){
     const doc = this.afs.collection('oferta');
     doc.add({
       title: oferta.title,

@@ -1,4 +1,4 @@
-export interface Notif{
+export interface Notificacion{
     token:string;
     title:string;
     body:string;

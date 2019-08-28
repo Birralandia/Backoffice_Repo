@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComunicateWebServiceService } from 'src/app/services/comunicate-web-service.service';
-import { Notif } from 'src/app/interfaces/notif';
+import { Notificacion } from 'src/app/interfaces/notificaciones';
 import { GetDataCloudFirestoreService } from 'src/app/services/get-data-cloud-firestore.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class NuevaNotificacionComponent implements OnInit {
 
   target : string;
   icon : number;
-  notification : Notif;
+  notification : Notificacion;
   Oferta : any;
   listClients : any[];
   productSelected : string;
