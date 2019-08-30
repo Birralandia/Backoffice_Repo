@@ -28,8 +28,6 @@ export class LoginComponent implements OnInit {
 
 
   loginAuth(user,pass){
-    console.log(user);
-    console.log(pass);
     this.CFDataBase.SignIn(user,pass);
   }
 

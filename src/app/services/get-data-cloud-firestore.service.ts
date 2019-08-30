@@ -67,7 +67,7 @@ SignIn(email, password) {
       console.log(this.SetUserData(result.user));
      
         this.ngZone.run(() => {
-          this.router.navigate(['panel']);
+          this.router.navigate(['backoffice/dashboard']);
         });
       
     }).catch((error) => {
@@ -229,7 +229,18 @@ SignOut() {
     const doc = this.afs.collection('productos');
     const listProducts = doc.valueChanges();
     return listProducts;
-}
+  }
+
+   /**
+   * Get Offers collection. Return Json type Oferta
+   */
+  getOfertasWithKey( keyOferta ){
+    const doc = this.afs.collection('oferta').doc(keyOferta);
+    const listProducts = doc.valueChanges();
+    return listProducts;
+
+
+  }
 
 /*****************************************************/
 
@@ -285,4 +296,20 @@ agregarVenta(venta : Ventas){
     })
   }
  
+/***************************************************/
+
+/***************** UPDATE METHODS ****************/
+
+updateUsuario(slug : Cliente){
+  const doc = this.afs.collection('users').doc(slug.uid);
+  doc.set({
+    email:slug.email,
+    nombre:slug.nombre,
+    token:slug.token,
+    uid:slug.uid,
+    puntos:slug.puntos,
+    ultimaCompra:slug.ultimaCompra
+  })
+}
+
 }

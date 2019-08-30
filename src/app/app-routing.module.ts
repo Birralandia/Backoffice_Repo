@@ -11,6 +11,7 @@ import { ScancameraComponent } from './component/scancamera/scancamera.component
 import { NuevoRegistroComponent } from './component/scancamera/nuevo-registro/nuevo-registro.component';
 import { RegistroComponent } from './component/registro/registro.component';
 import { ConfiguracionComponent } from './component/backoffice/configuracion/configuracion.component';
+import { NuevoRegistroPromocionComponent } from './component/scancamera/nuevo-registro-promocion/nuevo-registro-promocion.component';
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
@@ -24,8 +25,7 @@ const routes: Routes = [
     { path: 'nueva-notificacion', component: NuevaNotificacionComponent},
     { path: 'scanner', component: ScancameraComponent},
     { path: 'nueva-venta/:idcliente', component: NuevoRegistroComponent},
-
-
+    { path: 'nueva-venta-promocion/:idcliente', component: NuevoRegistroPromocionComponent},
   ]}
 ];
 
