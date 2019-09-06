@@ -29,6 +29,7 @@ import { RegistroComponent } from './component/registro/registro.component';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ConfiguracionComponent } from './component/backoffice/configuracion/configuracion.component';
 import { NuevoRegistroPromocionComponent } from './component/scancamera/nuevo-registro-promocion/nuevo-registro-promocion.component';
+import { FinanzasComponent } from './component/backoffice/finanzas/finanzas.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { NuevoRegistroPromocionComponent } from './component/scancamera/nuevo-re
     NuevoRegistroComponent,
     RegistroComponent,
     ConfiguracionComponent,
-    NuevoRegistroPromocionComponent
+    NuevoRegistroPromocionComponent,
+    FinanzasComponent
   ],
   imports: [
     BrowserModule,

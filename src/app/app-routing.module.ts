@@ -12,7 +12,7 @@ import { NuevoRegistroComponent } from './component/scancamera/nuevo-registro/nu
 import { RegistroComponent } from './component/registro/registro.component';
 import { ConfiguracionComponent } from './component/backoffice/configuracion/configuracion.component';
 import { NuevoRegistroPromocionComponent } from './component/scancamera/nuevo-registro-promocion/nuevo-registro-promocion.component';
-
+import { FinanzasComponent } from './component/backoffice/finanzas/finanzas.component';
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'registro_back', component:RegistroComponent},
@@ -20,6 +20,7 @@ const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent},
     { path: 'configuracion', component: ConfiguracionComponent},
     { path: 'economy', component: ContabilidadComponent},
+    { path: 'finanzas', component: FinanzasComponent},
     { path: 'clientes', component: ClientesComponent},
     { path: 'notificacion', component: NotificacionComponent},
     { path: 'nueva-notificacion', component: NuevaNotificacionComponent},
