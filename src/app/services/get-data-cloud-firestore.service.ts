@@ -223,6 +223,14 @@ SignOut() {
   }
 
   /**
+   * Get Clients collection. Return Json type Cliente.
+   */
+  getVentas(){
+    const doc = this.afs.collection('ventas');
+    const listVentas = doc.valueChanges();
+    return listVentas;
+  }
+  /**
    * Get Products collection. Return Json type Product
    */
   getProductos(){
