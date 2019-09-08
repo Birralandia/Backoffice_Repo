@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div id="cerrar-menu" (click)="isMenu = false">
+    <div id="cerrar-menu" (click)="isMenu = false" [ngClass]=" isMenu ? 'false_icon' : 'true_icon' ">
         <img src="/assets/down-arrow.png">
     </div>
 </nav>
