@@ -9,7 +9,7 @@ import { GetDataCloudFirestoreService } from 'src/app/services/get-data-cloud-fi
 export class LoginComponent implements OnInit {
 
   constructor(
-    private CFDataBase : GetDataCloudFirestoreService
+    public CFDataBase : GetDataCloudFirestoreService
   ) { 
     this.CFDataBase.formData = {
       uid: null,

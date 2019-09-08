@@ -9,7 +9,7 @@ import { GetDataCloudFirestoreService } from 'src/app/services/get-data-cloud-fi
 export class RegistroComponent implements OnInit {
 
   constructor(
-    private CFDataBase : GetDataCloudFirestoreService
+    public CFDataBase : GetDataCloudFirestoreService
   ) { 
    
   }
