@@ -49,6 +49,17 @@
             </div>
         </div>
 
+        <div class="row card_item_nav" routerLink="finanzas" [ngClass]="(getRouterActive()==='finanzas')?'active_card':''">
+            <div class="item_seleccionado" *ngIf="getRouterActive() === 'finanzas'" [ngClass]="(getRouterActive()==='finanzas')?'active_item':''"></div>
+
+
+
+            <div class="col-12">
+                <img src="/assets/hand.png" class="logo">
+                <a> Finanzas </a>
+            </div>
+        </div>
+
         <div class="row card_item_nav" routerLink="scanner" [ngClass]="(getRouterActive()==='scanner')?'active_card':''">
             <div class="item_seleccionado" *ngIf="getRouterActive() === 'scanner'" [ngClass]="(getRouterActive()==='scanner')?'active_item':''"></div>
 
