@@ -54,6 +54,7 @@ import { FinanzasComponent } from './component/backoffice/finanzas/finanzas.comp
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
+    AngularFireAuthModule,
     AppRoutingModule,
     HttpModule,
     FormsModule,

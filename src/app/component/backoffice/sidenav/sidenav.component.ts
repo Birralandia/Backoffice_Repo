@@ -8,12 +8,12 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class SidenavComponent implements OnInit {
 
-
+  isMenu : boolean;
 
   constructor(
     private Router : Router
   ) { 
-   
+   this.isMenu = true;
   }
 
   ngOnInit() {
