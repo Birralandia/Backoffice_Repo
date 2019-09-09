@@ -42,7 +42,7 @@
         <div class="d-flex justify-content-center"><a>Ingresos brutos mensuales</a></div>
     </div>
 
-    <div class="row mt-4">
+    <div class="row mt-4 pb-5">
         <div class="col-12">
 
             <div class="card_table">
@@ -55,46 +55,20 @@
 
                 <div class="card_table">
                     <div class="card_table_body">
-                        <div class="item_table d-flex">
-                            <img src="/assets/down-arrow.png" class="down_arrow">
+                        <div class="item_table d-flex" *ngFor="let x of mesesIngresos">
 
-                            <div class="px-1">
-                                <b class="nuevo-ingreso">Nuevo Ingreso </b> <br> <a class="fecha-ingreso">11/10/2019</a>
+                            <div class="px-1 d-flex" style="max-width: 40vw;">
+                                <img src="/assets/eraser.png" class="imgSell"> <a class=" my-auto"> Vendiste <b class=" nuevo-ingreso"> {{x.cantidad}} {{x.producto}} </b></a>
                             </div>
-                            <div class="pl-4">
-                                <small>Total bruto </small> <br> <a class="fecha-ingreso">$1.275,22</a>
+                            <div class="pl-4 d-flex" style="    position: absolute;
+                            right: 15px;
+                            top: 18.5px;">
+                                <p class="fecha-ingreso my-auto mx-auto text-center"> ${{x.precio}}
+                                    <br> {{x.fecha}}
+                                </p>
                             </div>
                         </div>
-                        <div class="item_table d-flex">
-                            <img src="/assets/down-arrow.png" class="down_arrow">
 
-                            <div class="px-1">
-                                <b class="nuevo-ingreso">Nuevo Ingreso </b> <br> <a class="fecha-ingreso">11/10/2019</a>
-                            </div>
-                            <div class="pl-4">
-                                <small>Total bruto </small> <br> <a class="fecha-ingreso">$1.275,22</a>
-                            </div>
-                        </div>
-                        <div class="item_table d-flex">
-                            <img src="/assets/down-arrow.png" class="down_arrow">
-
-                            <div class="px-1">
-                                <b class="nuevo-ingreso">Nuevo Ingreso </b> <br> <a class="fecha-ingreso">11/10/2019</a>
-                            </div>
-                            <div class="pl-4">
-                                <small>Total bruto </small> <br> <a class="fecha-ingreso">$1.275,22</a>
-                            </div>
-                        </div>
-                        <div class="item_table d-flex">
-                            <img src="/assets/down-arrow.png" class="down_arrow">
-
-                            <div class="px-1">
-                                <b class="nuevo-ingreso">Nuevo Ingreso </b> <br> <a class="fecha-ingreso">11/10/2019</a>
-                            </div>
-                            <div class="pl-4">
-                                <small>Total bruto </small> <br> <a class="fecha-ingreso">$1.275,22</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
