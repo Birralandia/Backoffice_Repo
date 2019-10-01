@@ -24,9 +24,13 @@ import { GetDataCloudFirestoreService } from './services/get-data-cloud-firestor
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { RegistroComponent } from './component/registro/registro.component';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
+import { ConfiguracionComponent } from './component/backoffice/configuracion/configuracion.component';
+import { NuevoRegistroPromocionComponent } from './component/scancamera/nuevo-registro-promocion/nuevo-registro-promocion.component';
+import { FinanzasComponent } from './component/backoffice/finanzas/finanzas.component';
+import { ProductosComponent } from './component/backoffice/productos/productos.component';
 
 
 @NgModule({
@@ -41,17 +45,23 @@ import { AngularFireAuth } from '@angular/fire/auth';
     NuevaNotificacionComponent,
     ScancameraComponent,
     NuevoRegistroComponent,
-    RegistroComponent
+    RegistroComponent,
+    ConfiguracionComponent,
+    NuevoRegistroPromocionComponent,
+    FinanzasComponent,
+    ProductosComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     AppRoutingModule,
     HttpModule,
     FormsModule,
     ZXingScannerModule,
-  
+    AngularFireAuthModule,
     FormsModule,
     BrowserModule,
     HttpClientModule,

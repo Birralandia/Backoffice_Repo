@@ -1,0 +1,79 @@
+<div class="container ">
+
+    <div class="row">
+        <div class="col-12  mt-4 d-flex ">
+            <h2>Finanzas </h2>
+            <div class="btn_add_item">
+                <b>+</b>
+            </div>
+        </div>
+    </div>
+
+    <div class=" tabla_grafico mt-4">
+        <div class="container" style="position: absolute;height: 100%;left:5px;">
+            <div class="row" style="height: 100%;">
+                <div class="col-3 px-2">
+
+                    <div class="barra" [style.height]="mayorIndex === 0 ? '260px' : calculateHeightBar(valoresMes[0])" [ngClass]="cargarBarras ? 'start_barras' : 'h-5'">
+                        <div class="d-flex justify-content-center text-value"><a class="mes_barra mb-1">$ {{ valoresMes[0]}}</a></div>
+                        <div class="d-flex justify-content-center text-barra-mes"><a class="mes_barra">{{mesesShow[0]}}</a></div>
+                    </div>
+                </div>
+                <div class="col-3 px-2">
+                    <div class="barra" [style.height]="mayorIndex === 1 ? '260px' : calculateHeightBar(valoresMes[1])" [ngClass]="cargarBarras ? 'start_barras' : 'h-5'">
+                        <div class="d-flex justify-content-center text-value"><a class="mes_barra mb-1">$ {{valoresMes[1]}}</a></div>
+                        <div class="d-flex justify-content-center text-barra-mes"><a class="mes_barra">{{mesesShow[1]}}</a></div>
+                    </div>
+                </div>
+                <div class="col-3 px-2">
+                    <div class="barra" [style.height]="mayorIndex === 2 ? '260px' : calculateHeightBar(valoresMes[2])" [ngClass]="cargarBarras ? 'start_barras' : 'h-5'">
+                        <div class="d-flex justify-content-center text-value"><a class="mes_barra mb-1">$ {{valoresMes[2]}}</a></div>
+                        <div class="d-flex justify-content-center text-barra-mes"><a class="mes_barra">{{mesesShow[2]}}</a></div>
+                    </div>
+                </div>
+                <div class="col-3 px-2">
+                    <div class="barra" [style.height]="mayorIndex === 3 ? '260px': calculateHeightBar(valoresMes[3])" [ngClass]="cargarBarras ? 'start_barras' : 'h-5'">
+                        <div class="d-flex justify-content-center text-value"><a class="mes_barra mb-1">$ {{valoresMes[3]}}</a></div>
+                        <div class="d-flex justify-content-center text-barra-mes"><a class="mes_barra">{{mesesShow[3]}}</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center"><a>Ingresos brutos mensuales</a></div>
+    </div>
+
+    <div class="row mt-4 pb-5">
+        <div class="col-12">
+
+            <div class="card_table">
+
+
+                <div class="card_table_header d-flex px-4 py-4">
+                    <b class="titulo">Mi última actividad</b>
+                    <img src="/assets/more.png" class="more-items ml-auto">
+                </div>
+
+                <div class="card_table">
+                    <div class="card_table_body">
+                        <div class="item_table d-flex" *ngFor="let x of mesesIngresos">
+
+                            <div class="px-1 d-flex" style="max-width: 40vw;">
+                                <img src="/assets/eraser.png" class="imgSell"> <a class=" my-auto"> Vendiste <b class=" nuevo-ingreso"> {{x.cantidad}} {{x.producto}} </b></a>
+                            </div>
+                            <div class="pl-4 d-flex" style="    position: absolute;
+                            right: 15px;
+                            top: 18.5px;">
+                                <p class="fecha-ingreso my-auto mx-auto text-center"> ${{x.precio}}
+                                    <br> {{x.fecha}}
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

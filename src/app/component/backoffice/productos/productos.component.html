@@ -1,0 +1,77 @@
+<div class="container ">
+
+    <div class="row">
+        <div class="col-12  mt-4 d-flex ">
+            <h2>Productos </h2>
+            <div class="btn_add_item">
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4 pb-5">
+        <div class="col-12">
+
+            <div class="card_table">
+
+
+                <div class="card_table_header d-flex px-4 py-4">
+                    <b class="titulo">Mis productos</b>
+                </div>
+
+                <div class="card_table">
+                    <div class="card_table_body">
+                        <div class="item_table d-flex" *ngFor="let x of listProductos">
+
+                            <div class="px-1 d-flex">
+                                <img src="/assets/burger.png" class="imgSell" *ngIf="isMobile">
+                                <a class=" my-auto ml-2"> <b class=" nuevo-ingreso"> {{x.nombre}} -   </b>
+                                    <div>$ {{x.precio}}
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="ml-auto my-auto text-info pr-3" (click)="isEditProduct = true;tempProduct = x">Editar</div>
+                            <div class=" my-auto text-danger pr-3" (click)="borrar(x.uid)">Borrar</div>
+
+
+
+
+                        </div>
+                        <div class="item_table d-flex">
+                            <div class="px-1 d-flex">
+                                <a class=" my-auto ml-2"> <b class=" nuevo-ingreso text-info" (click)="isNewProduct = true">  + Agregar nuevo producto  </b>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="lightbox-d" *ngIf="isNewProduct || isEditProduct">
+    <div class="popup">
+        <div>
+            <a class="h4"> {{isNewProduct ? 'Estas por agregar un nuevo producto' : 'Estas por editar un producto'}}</a>
+        </div>
+        <hr>
+        <div class="my-3">
+
+            <input type="text" placeholder="Nombre del producto" [(ngModel)]="tempProduct.nombre">
+
+        </div>
+        <div>
+            <input type="number" placeholder="Precio del producto" [(ngModel)]="tempProduct.precio">
+        </div>
+        <div class="d-flex my-3">
+            <div class="ml-auto mt-auto py-2">
+
+                <button class="btn-p mr-3" (click)="isNewProduct? guardarProducto() : modificarProducto()">Guardar</button>
+                <button class="btn-s " (click)="isNewProduct = false;isEditProduct = false;resetProduct()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+</div>

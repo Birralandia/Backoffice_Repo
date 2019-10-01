@@ -1,4 +1,4 @@
-<nav class="navbar_backoffice">
+<nav class="navbar_backoffice" [ngClass]="isMenu ? 'open_menu' : 'close_menu' ">
     <div class="container">
         <div class="row card_item_nav" routerLink="dashboard" [ngClass]="(getRouterActive()==='dashboard')?'active_card':''">
             <div class="item_seleccionado" [ngClass]="(getRouterActive()==='dashboard')?'active_item':''" *ngIf="getRouterActive() === 'dashboard'"></div>
@@ -9,13 +9,25 @@
                 <a> Panel de inicio</a>
             </div>
         </div>
-        <div class="row card_item_nav" routerLink="economy" [ngClass]="(getRouterActive()==='economy')?'active_card':''">
-            <div class="item_seleccionado" *ngIf="getRouterActive() === 'economy'" [ngClass]="(getRouterActive()==='economy')?'active_item':''"></div>
+
+        <div class="row card_item_nav" routerLink="productos" [ngClass]="(getRouterActive()==='productos')?'active_card':''">
+            <div class="item_seleccionado" [ngClass]="(getRouterActive()==='productos')?'active_item':''" *ngIf="getRouterActive() === 'productos'"></div>
 
 
             <div class="col-12">
-                <img src="/assets/economy.png" class="logo">
-                <a> Contabilidad</a>
+                <img src="/assets/burger.png" class="logo">
+                <a> Productos</a>
+            </div>
+        </div>
+
+        <div class="row card_item_nav" routerLink="finanzas" [ngClass]="(getRouterActive()==='finanzas')?'active_card':''">
+            <div class="item_seleccionado" *ngIf="getRouterActive() === 'finanzas'" [ngClass]="(getRouterActive()==='finanzas')?'active_item':''"></div>
+
+
+
+            <div class="col-12">
+                <img src="/assets/hand.png" class="logo">
+                <a> Finanzas </a>
             </div>
         </div>
 
@@ -29,8 +41,18 @@
                 <a> Clientes</a>
             </div>
         </div>
+
+        <div class="row card_item_nav" routerLink="configuracion" [ngClass]="(getRouterActive()==='configuracion')?'active_card':''">
+            <div class="item_seleccionado" *ngIf="getRouterActive() === 'configuracion'" [ngClass]="(getRouterActive()==='configuracion')?'active_item':''"></div>
+            <div class="col-12">
+                <img src="/assets/gears.png" class="logo">
+                <a> Configuracion</a>
+            </div>
+        </div>
+
         <div class="row card_item_nav" routerLink="notificacion" [ngClass]="(getRouterActive()==='notificacion')?'active_card':''">
             <div class="item_seleccionado" *ngIf="getRouterActive() === 'notificacion'" [ngClass]="(getRouterActive()==='notificacion')?'active_item':''"></div>
+
 
 
             <div class="col-12">
@@ -38,6 +60,7 @@
                 <a> Notificaciones</a>
             </div>
         </div>
+
 
         <div class="row card_item_nav" routerLink="scanner" [ngClass]="(getRouterActive()==='scanner')?'active_card':''">
             <div class="item_seleccionado" *ngIf="getRouterActive() === 'scanner'" [ngClass]="(getRouterActive()==='scanner')?'active_item':''"></div>
@@ -49,8 +72,14 @@
             </div>
         </div>
     </div>
+    <div id="cerrar-menu" (click)="isMenu = false" [ngClass]=" isMenu ? 'false_icon' : 'true_icon' ">
+        <img src="/assets/down-arrow.png">
+    </div>
 </nav>
 
-<div id="content_backoffice">
+<div id="content_backoffice" [ngClass]="isMenu ? 'open_menu_content' : 'close_menu_content' ">
+    <div id="abrir-menu" (click)="isMenu = true" [ngClass]="isMenu ? 'open_menu_i' : 'close_menu_c' ">
+        <img src="/assets/down-arrow.png">
+    </div>
     <router-outlet></router-outlet>
 </div>

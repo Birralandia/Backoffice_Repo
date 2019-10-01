@@ -55,10 +55,8 @@
                 <div class="cont_input">
                     <select (change)="productSelected = $event.target.value">
                                 <option>Seleccioná producto</option>
-                                <option>Valet</option>
-                                <option>Acolchado</option>
-                                <option>Secado</option>
-                                <option>Zapatillas</option>
+                                <option *ngFor="let x of productosList">{{x.nombre}}</option>
+                             
                             </select>
                 </div>
 

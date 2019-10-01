@@ -1,0 +1,30 @@
+<div class="container ">
+
+    <div class="row pt-4">
+        <div class="col-12">
+            <div class="form_add_off py-3">
+                <div class="text-center">
+                    <a class="text-danger h3 ">Registrá nueva venta</a>
+                </div>
+                <div class="cont_input">
+                    <input type="text" placeholder="Nombre del cliente" name="title" disabled [(ngModel)]="clientScanner.email">
+                </div>
+                <div class="cont_input">
+                    <input type="text" placeholder="Titulo de la promocion" name="title" disabled [(ngModel)]="promoScanner.title">
+                </div>
+
+                <div class="cont_input">
+                    <select (change)="productSelected = $event.target.value" value="{{promoScanner.producto}}">
+                            <option>Seleccioná producto</option>
+                            <option *ngFor="let x of products">{{x.nombre}}</option>
+                        </select>
+                </div>
+                <div class="cont_input">
+                    <input type="text" placeholder="La oferta es de 0%" name="title" disabled [(ngModel)]="promoScanner.descuento">
+                </div>
+
+                <p style="padding-left:5%;padding-right: 5%;"><button class="btn-primary mt-3 w100" (click)="agregarVenta()">AGREGAR NUEVA VENTA</button></p>
+            </div>
+        </div>
+    </div>
+</div>

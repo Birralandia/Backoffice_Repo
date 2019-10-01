@@ -18,6 +18,8 @@ export class NuevaNotificacionComponent implements OnInit {
   productSelected : string;
   diasFrecuencia : number;
 
+  productosList : any[];
+
   constructor(
     private CFService : GetDataCloudFirestoreService,
     private WebServiceFCM : ComunicateWebServiceService
@@ -48,6 +50,20 @@ export class NuevaNotificacionComponent implements OnInit {
         return element;
       })
     });
+
+    this.CFService.getProductos()
+    .subscribe(data => {
+      const aux = [];
+      try {
+        data.docChanges().map(element => {
+          aux.push({ uid: element.doc.id, nombre: element.doc.data().nombre, precio: element.doc.data().precio });
+        });
+      } catch {
+        alert("¡Error! Porfavor volvé a intentarlo, si persiste el problema ponete en contacto con tu soporte");
+      }
+      this.productosList = aux;
+
+    })
   }
 
   sendNotification(){

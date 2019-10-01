@@ -57,7 +57,12 @@ export class ScancameraComponent implements OnInit {
   }
 
   handleQrCodeResult(resultString: string) {
-    this.Router.navigateByUrl("/backoffice/nueva-venta/"+resultString);
+    alert(resultString);
+    if(resultString.indexOf("|&|") === -1){
+      this.Router.navigateByUrl("/backoffice/nueva-venta/"+resultString);
+    }else{
+      this.Router.navigateByUrl("/backoffice/nueva-venta-promocion/"+resultString);
+    }
   }
 
   onDeviceSelectChange(selectedValue: string) {

@@ -1,0 +1,43 @@
+.form_add_off {
+    background-color: #fafafa;
+    width: 100%;
+    box-shadow: 0px 0px 10px -7px;
+    border-radius: 5px;
+}
+
+.cont_input {
+    display: flex;
+}
+
+input,
+textarea,
+select {
+    width: 90%;
+    background-color: rgb(230, 230, 230);
+    box-shadow: 0px 0px 5px -4px;
+    border: 0px;
+    margin: auto;
+    margin-top: 15px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+textarea {
+    min-height: 100px;
+}
+
+.change_value {
+    width: 25%!important;
+}
+
+.item_to_select_img_off {
+    border: 1px solid black;
+    box-shadow: 0px 0px 5px 0px;
+    img {
+        max-width: 100%;
+    }
+}
+
+.item_select {
+    background: #f90d4e;
+}

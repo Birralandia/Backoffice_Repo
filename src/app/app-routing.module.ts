@@ -10,21 +10,25 @@ import { NuevaNotificacionComponent } from './component/backoffice/notificacion/
 import { ScancameraComponent } from './component/scancamera/scancamera.component';
 import { NuevoRegistroComponent } from './component/scancamera/nuevo-registro/nuevo-registro.component';
 import { RegistroComponent } from './component/registro/registro.component';
-
-
+import { ConfiguracionComponent } from './component/backoffice/configuracion/configuracion.component';
+import { NuevoRegistroPromocionComponent } from './component/scancamera/nuevo-registro-promocion/nuevo-registro-promocion.component';
+import { FinanzasComponent } from './component/backoffice/finanzas/finanzas.component';
+import { ProductosComponent } from './component/backoffice/productos/productos.component';
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'registro_back', component:RegistroComponent},
   { path: 'backoffice', component: SidenavComponent, children: [
     { path: 'dashboard', component: DashboardComponent},
+    { path: 'configuracion', component: ConfiguracionComponent},
     { path: 'economy', component: ContabilidadComponent},
+    { path: 'finanzas', component: FinanzasComponent},
     { path: 'clientes', component: ClientesComponent},
     { path: 'notificacion', component: NotificacionComponent},
+    { path: 'productos', component: ProductosComponent},
     { path: 'nueva-notificacion', component: NuevaNotificacionComponent},
     { path: 'scanner', component: ScancameraComponent},
     { path: 'nueva-venta/:idcliente', component: NuevoRegistroComponent},
-
-
+    { path: 'nueva-venta-promocion/:idcliente', component: NuevoRegistroPromocionComponent},
   ]}
 ];
 
