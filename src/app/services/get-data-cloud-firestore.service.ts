@@ -67,7 +67,7 @@ SignIn(email, password) {
       console.log(this.SetUserData(result.user));
      
         this.ngZone.run(() => {
-          this.router.navigate(['panel']);
+          this.router.navigate(['backoffice/dashboard']);
         });
       
     }).catch((error) => {

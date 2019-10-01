@@ -22,7 +22,7 @@ $extraData  =   array(
 $deviceToken    =   $token;
 $ch = curl_init("https://fcm.googleapis.com/fcm/send");
 $header=array('Content-Type: application/json',
-"Authorization: key=AAAAXYE7yJI:APA91bEcmekxjiKIfx-pHJsNoE1_43Lkl1D0Xdp6KK-nDPc_gJeF-ua28xNXtUqNotCrC9Uf2FWoW10Vs5LtNMjUB9pSFPK4j8U3s6LCKJIrJR-MkeOUGvVZ5CYRiL8oLjQxm4J2yCBY");
+"Authorization: key=AAAAeTs63Vw:APA91bFJpDl7yNNe-7XGoOfPajSXhN1vmrRubCWNxyZpzmyoLhZWsk-hCK7ETvC_WTCa9WLIMRrPUxIRRR1Qe6IriwqJtujoQKLfiLRqCt7Saa2we0nfHiqLxlwXo0xohcrF4SJy_4J8");
 curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
