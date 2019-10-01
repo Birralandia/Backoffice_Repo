@@ -4,68 +4,7 @@
             <h2>Administrador de clientes </h2>
         </div>
     </div>
-    <div class="row ">
-        <div class="col-md-6 col-12">
-            <!-- CARD PRIMARY -->
-            <div class="card_primary mt-4">
-                <div class="row">
-                    <div class="col-12 d-flex mb-2">
-                        <div class="content_icon_primary">
-                            <img src="/assets/happiness.png" alt="user">
-                        </div>
-                        <div class="ml-auto title_card_info">
-                            <p>
-                                7
-                                <br>
-                                <a>Nuevos clientes</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-8 text-muted">
-                        <p>
-                            Ultimo registro: 15m
-                        </p>
-                    </div>
-                    <div class="col-4 text-muted d-flex">
-                        <p class="ml-auto">
-                            Hoy
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- ./CARD PRIMARY -->
-        </div>
-        <div class="col-md-6 col-12">
-            <!-- CARD SECONDARY -->
-            <div class="card_secondary mt-4">
-                <div class="row">
-                    <div class="col-12 d-flex mb-2">
-                        <div class="content_icon_primary">
-                            <img src="/assets/user.png">
-                        </div>
-                        <div class="ml-auto title_card_info_secondary">
-                            <p>
-                                898
-                                <br>
-                                <a> Ofertas activas</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-8 text-muted_sc">
-                        <p>
-                            Ultimo registro: 15m
-                        </p>
-                    </div>
-                    <div class="col-4 text-muted_sc d-flex">
-                        <p class="ml-auto">
-                            Hoy
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- ./CARD SECONDARY -->
-        </div>
-    </div>
+
     <div class="row mt-4">
         <div class="col-12">
 
@@ -74,16 +13,45 @@
                     <b>Listado de clientes</b>
                 </div>
                 <div class="card_table_body">
-                    <div class="item_table d-flex">
-                        <img src="/assets/down-arrow.png" class="down_arrow">
+                    <div class="item_table d-flex" *ngFor="let x of listClientes">
                         <div class="cont_img_logo_user">
                             <img src="/assets/user.png">
                         </div>
-                        <div class="ml-2">
-                            <a class="mb-0">Toto hourcade <br> <small>Ultimo ingreso: 2h</small></a>
+                        <div class="ml-2 d-flex my-auto">
+                            <p class="mb-0">{{x.nombre}} - {{x.email}}
+                                <br> <a class="text-info" (click)="cliente = x; tempNotificacion.token = cliente.token">Enviar notificación</a></p>
                         </div>
+                        {{tempNotificacion.title}}
+
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="lightbox-d" *ngIf="cliente">
+    <div class="popup">
+        <div>
+            <a class="h4">Enviale una notificación a {{cliente.nombre}}</a>
+        </div>
+        <hr>
+        <div class="my-3">
+            <input placeholder="Titulo de la notificación a enviar" [(ngModel)]="tempNotificacion.title">
+        </div>
+
+        <div>
+            <textarea placeholder="Mensaje de la notificación" [(ngModel)]="tempNotificacion.body"></textarea>
+        </div>
+
+        <div class="d-flex my-3">
+            <div class="ml-auto mt-auto py-2">
+
+                <button class="btn-p mr-3" (click)="sendNotificacion()">Enviar</button>
+                <button class="btn-s" (click)="cliente = null">Cancelar</button>
             </div>
         </div>
     </div>

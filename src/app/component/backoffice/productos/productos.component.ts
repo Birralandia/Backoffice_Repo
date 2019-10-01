@@ -79,6 +79,7 @@ export class ProductosComponent implements OnInit {
 
   borrar(uid ){
     this.cloudFireseService.deleteProductos(uid);
+    this.getDataProductos();
   }
 
 }

@@ -41,6 +41,7 @@ export class FinanzasComponent implements OnInit {
   calculateLastVentasGrafico(MesesNumber){
     this.CloudFirestoreService.getVentas()
     .subscribe(data => {
+      this.mesesIngresos = [];
       this.ventas = data;
       this.ventas.forEach(element => {
         MesesNumber.forEach(numeroMes => {
@@ -87,6 +88,7 @@ export class FinanzasComponent implements OnInit {
 
 
   calculateMeses(Meses,MesesName){
+    this.mesesShow = [];
     Meses.forEach(element => {
       this.mesesShow.push(MesesName[element-1]);
     });

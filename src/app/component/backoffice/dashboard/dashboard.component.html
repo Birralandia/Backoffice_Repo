@@ -14,17 +14,14 @@
                             <img src="/assets/user.png" alt="user">
                         </div>
                         <div class="ml-auto title_card_info">
-                            <p>
-                                898
+                            <p *ngIf="clients">
+                                {{clients.length}}
                                 <br>
                                 <a>Clientes totales</a>
                             </p>
                         </div>
                     </div>
                     <div class="col-8 text-muted">
-                        <p>
-                            Ultimo registro: 15m
-                        </p>
                     </div>
                     <div class="col-4 text-muted d-flex">
                         <p class="ml-auto">
@@ -44,17 +41,15 @@
                             <img src="/assets/notification.png">
                         </div>
                         <div class="ml-auto title_card_info_secondary">
-                            <p>
-                                898
+                            <p *ngIf="oferts">
+                                {{oferts.length}}
                                 <br>
                                 <a> Ofertas activas</a>
                             </p>
                         </div>
                     </div>
                     <div class="col-8 text-muted_sc">
-                        <p>
-                            Ultimo registro: 15m
-                        </p>
+
                     </div>
                     <div class="col-4 text-muted_sc d-flex">
                         <p class="ml-auto">
@@ -74,7 +69,7 @@
                         <img src="/assets/low-price.png" style="transform: rotate(180deg)" class="mb-1">
                         <br> Ingresos de hoy
                         <br>
-                        <b>$20</b>
+                        <b>${{ganacias}}</b>
                     </div>
                 </div>
             </div>
@@ -86,7 +81,7 @@
                         <img src="/assets/low-price.png" class="mb-1">
                         <br> Gastos de hoy
                         <br>
-                        <b>$20</b>
+                        <b>${{gastos}}</b>
                     </div>
                 </div>
             </div>
@@ -95,7 +90,7 @@
 
     <div class="row">
         <div class="col-12 col-md-6 mt-4">
-            <button class="btn-primary w100">CREAR NUEVA OFERTA</button>
+            <button class="btn-primary w100" routerLink="/backoffice/nueva-notificacion">CREAR NUEVA OFERTA</button>
         </div>
         <div class="col-md-6 col-12 mt-4">
 

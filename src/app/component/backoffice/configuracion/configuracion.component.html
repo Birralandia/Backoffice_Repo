@@ -18,35 +18,16 @@
 
 
                 <div class="card_table_body">
-                    <div class="item_table d-flex">
-                        <img src="/assets/down-arrow.png" class="down_arrow">
 
-                        <div class="cont_img_logo_user">
-                            <img src="/assets/user.png">
-                        </div>
-                        <div class="ml-2">
-                            <a class="mb-0"><b> Administrar usuarios</b> <br> <small>Agregá y borrar usuarios</small></a>
-                        </div>
-                    </div>
 
-                    <div class="item_table d-flex">
-                        <img src="/assets/down-arrow.png" class="down_arrow">
-                        <div class="cont_img_logo_user">
-                            <img src="/assets/clock.png">
-                        </div>
-                        <div class="ml-2">
-                            <a class="mb-0"><b> Configurar horarios </b> <br> <small>Horarios de apertura y de cierre</small></a>
-                        </div>
-                    </div>
-
-                    <div class="item_table d-flex">
+                    <div class="item_table d-flex" (click)="tipo = 'envios'">
 
                         <img src="/assets/down-arrow.png" class="down_arrow">
 
                         <div class="cont_img_logo_user">
                             <img src="/assets/scooter.png">
                         </div>
-                        <div class="ml-2">
+                        <div class="ml-2 d-flex my-auto">
                             <a class="mb-0"><b>Mis envios</b> <br> <small>Configurá tus envios</small></a>
                         </div>
                     </div>
@@ -57,13 +38,54 @@
                         <div class="cont_img_logo_user">
                             <img src="/assets/customer-service.png">
                         </div>
-                        <div class="ml-2">
+                        <div class="ml-2 d-flex my-auto">
                             <a class="mb-0"><b>¡Ayuda!</b> <br> <small>Nosotros te ayudamos</small></a>
                         </div>
                     </div>
 
                 </div>
 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="lightbox-d" *ngIf="tipo !== ''">
+    <div class="popup">
+        <div>
+            <a class="h4">Configuración de envios</a>
+        </div>
+        <hr>
+        <div class="my-3">
+            <select (change)="isEnvios = ($event.target.value === 'Si' ? false : true)">
+                    <option>
+                        ¿Hacen envíos?
+                    </option>
+                    <option >
+                        Si
+                    </option>
+                    <option >
+                        No
+                    </option>
+    
+                </select>
+        </div>
+        <div class="mb-3">
+            <input placeholder="¿En que horarios haces envios?" [disabled]="isEnvios" [(ngModel)]="dataEnvios.horario">
+        </div>
+
+        <div>
+            <input placeholder="¿Hastá cuantos KM de tu ubicación?" [disabled]="isEnvios" [(ngModel)]="dataEnvios.ubicacion">
+        </div>
+
+
+
+        <div class="d-flex my-3">
+            <div class="ml-auto mt-auto py-2">
+
+                <button class="btn-p mr-3" (click)="guardarConfiguracion()">Guardar</button>
+                <button class="btn-s" (click)="tipo = ''">Cancelar</button>
             </div>
         </div>
     </div>

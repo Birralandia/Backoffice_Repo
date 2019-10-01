@@ -253,9 +253,14 @@ export class GetDataCloudFirestoreService {
     const doc = this.afs.collection('oferta').doc(keyOferta);
     const listProducts = doc.valueChanges();
     return listProducts;
-
-
   }
+
+  getOfertasWithoutKey() {
+    const doc = this.afs.collection('oferta');
+    const listOferta = doc.valueChanges();
+    return listOferta;
+  }
+
 
   /*****************************************************/
 
@@ -320,6 +325,19 @@ export class GetDataCloudFirestoreService {
       puntos: oferta.puntos,
       dias: oferta.dias,
       fechaHoy: oferta.fechaHoy
+    })
+  }
+
+  /**
+   * Add Offers to data base - Oferta Interface
+   * @param envio Get variable of type Oferta Interface
+   */
+  agregarEnvio(data: any) {
+    const doc = this.afs.collection('envios');
+    doc.add({
+      ubicacion: data.ubicacion,
+      horario: data.horario,
+      status: data.status
     })
   }
 
