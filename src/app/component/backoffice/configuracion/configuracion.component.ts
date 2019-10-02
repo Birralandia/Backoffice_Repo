@@ -17,7 +17,7 @@ export class ConfiguracionComponent implements OnInit {
     private CloudFirestoreService: GetDataCloudFirestoreService
   ) {
     this.tipo = '';
-    this.isEnvios = false;
+    this.isEnvios = true;
     this.dataEnvios = {
       ubicacion: '',
       horario: '',
@@ -26,11 +26,23 @@ export class ConfiguracionComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.CloudFirestoreService.getEnvios()
+    .subscribe(data => {
+
+      try {
+        data.docChanges().map(element => {
+          this.dataEnvios = {uid: element.doc.id, horario: element.doc.data().horario, ubicacion: element.doc.data().ubicacion};
+        });
+      } catch {
+        alert('Error con el sistema de envios');
+      }
+    });
   }
 
   guardarConfiguracion() {
     this.dataEnvios.status = (!this.isEnvios).toString();
-    this.CloudFirestoreService.agregarEnvio(this.dataEnvios);
+    this.CloudFirestoreService.updateEnvios(this.dataEnvios);
+    this.tipo = '';
   }
 
 }

@@ -237,8 +237,6 @@ export class GetDataCloudFirestoreService {
   /**
    * Get Products collection. Return Json type Product
    */
-  countItems = 0;
-
   getProductos() {
     let productos = [];
     let cityRef = this.afs.collection('productos');
@@ -261,6 +259,16 @@ export class GetDataCloudFirestoreService {
     return listOferta;
   }
 
+
+  /**
+   * Get envios collection. Return Json type Envio
+   */
+  getEnvios() {
+    let productos = [];
+    let cityRef = this.afs.collection('envios');
+    return cityRef.get();
+
+  }
 
   /*****************************************************/
 
@@ -325,7 +333,7 @@ export class GetDataCloudFirestoreService {
       puntos: oferta.puntos,
       dias: oferta.dias,
       fechaHoy: oferta.fechaHoy
-    })
+    });
   }
 
   /**
@@ -338,7 +346,7 @@ export class GetDataCloudFirestoreService {
       ubicacion: data.ubicacion,
       horario: data.horario,
       status: data.status
-    })
+    });
   }
 
   /***************************************************/
@@ -368,7 +376,14 @@ export class GetDataCloudFirestoreService {
   }
 
 
-
+  updateEnvios(envios: any) {
+    const doc = this.afs.collection('envios').doc(envios.uid);
+    doc.update({
+      horario: envios.horario,
+      status: envios.status,
+      ubicacion: envios.ubicacion
+    });
+  }
 
 
 
