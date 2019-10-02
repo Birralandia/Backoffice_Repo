@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GetDataCloudFirestoreService } from 'src/app/services/get-data-cloud-firestore.service';
+import { Notificacion } from 'src/app/interfaces/notificaciones';
 
 @Component({
   selector: 'app-notificacion',
@@ -7,9 +9,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificacionComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  listNotificaciones: Notificacion[];
+  constructor(
+    private CloudFiretoreService: GetDataCloudFirestoreService
+  ) {
+    this.listNotificaciones = [];
   }
 
+  ngOnInit() {
+    this.getListOfertas();
+  }
+
+  getListOfertas() {
+    this.CloudFiretoreService.getOfertasUidRef()
+      .subscribe(data => {
+        try {
+          let aux;
+          this.listNotificaciones = [];
+          data.docChanges().map(element => {
+            aux = element.doc.data();
+            aux.uid = element.doc.id;
+            this.listNotificaciones.push(aux);
+          });
+        } catch {
+
+        }
+      });
+  }
+
+  borrarNotificacion(uid) {
+    this.CloudFiretoreService.deleteOferte(uid);
+  }
 }

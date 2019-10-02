@@ -3,4 +3,5 @@ export interface Notificacion{
     title:string;
     body:string;
     icon:string;
+    uid?:string;
 }

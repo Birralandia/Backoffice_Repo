@@ -259,6 +259,11 @@ export class GetDataCloudFirestoreService {
     return listOferta;
   }
 
+  getOfertasUidRef() {
+    let productos = [];
+    let cityRef = this.afs.collection('oferta');
+    return cityRef.get();
+  }
 
   /**
    * Get envios collection. Return Json type Envio
@@ -392,4 +397,9 @@ export class GetDataCloudFirestoreService {
   deleteProductos(uid){
     const doc = this.afs.collection('productos').doc(uid).delete();
   } 
+
+  deleteOferte(uid) {
+    const doc = this.afs.collection('oferta').doc(uid).delete();
+    console.log("borrado");
+  }
 }

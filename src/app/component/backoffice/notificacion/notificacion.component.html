@@ -15,50 +15,23 @@
                     <b>Mis Ofertas Activas</b>
                 </div>
                 <div class="card_table_body">
-                    <div class="item_table ">
+                    <div class="item_table " *ngFor="let x of listNotificaciones">
                         <div class="cont_img d-flex">
-                            <img class="mx-auto" src="https://www.chewboom.com/wp-content/uploads/2019/04/Wendy%E2%80%99s-Offers-A-Free-Small-Fries-And-Drink-With-Any-Premium-Hamburger-Purchase-678x381.jpg">
+                            <img class="mx-auto" src="/assets/burger.png">
                         </div>
                         <div>
-                            <p class="title_notification mt-3">¡Happy hour 2x1!</p>
-                            <p class="description_notification">Vení con tus amigos y rompete esas pintas tan deseadas ;)</p>
-                            <p class="mt-2"><b>Vence en:</b> <a class="text-danger">3 días</a></p>
-                            <p class="mt-2"><button class="w100 btn-secondary"> Ver más</button></p>
+                            <p class="title_notification mt-3 text-center">{{x.title}}</p>
+                            <p class="description_notification text-center">{{x.body}}</p>
+                            <p class="mt-2 text-center"><b>Vence en: </b> <a class="text-danger">3 días</a></p>
+
+                            <hr>
+                            <p class="py-3 text-center">
+                                <a class="text-info my-2">Recordar</a><a class="ml-3 pb-4 text-danger" (click)="borrarNotificacion(x.uid)">Borrar</a>
+                            </p>
                         </div>
                     </div>
-                    <div class="item_table ">
-                        <div class="cont_img d-flex">
-                            <img class="mx-auto" src="https://www.chewboom.com/wp-content/uploads/2019/04/Wendy%E2%80%99s-Offers-A-Free-Small-Fries-And-Drink-With-Any-Premium-Hamburger-Purchase-678x381.jpg">
-                        </div>
-                        <div>
-                            <p class="title_notification mt-3">¡Happy hour 2x1!</p>
-                            <p class="description_notification">Vení con tus amigos y rompete esas pintas tan deseadas ;)</p>
-                            <p class="mt-2"><b>Vence en:</b> <a class="text-danger">3 días</a></p>
-                            <p class="mt-2"><button class="w100 btn-secondary"> Ver más</button></p>
-                        </div>
-                    </div>
-                    <div class="item_table ">
-                        <div class="cont_img d-flex">
-                            <img class="mx-auto" src="https://www.chewboom.com/wp-content/uploads/2019/04/Wendy%E2%80%99s-Offers-A-Free-Small-Fries-And-Drink-With-Any-Premium-Hamburger-Purchase-678x381.jpg">
-                        </div>
-                        <div>
-                            <p class="title_notification mt-3">¡Happy hour 2x1!</p>
-                            <p class="description_notification">Vení con tus amigos y rompete esas pintas tan deseadas ;)</p>
-                            <p class="mt-2"><b>Vence en:</b> <a class="text-danger">3 días</a></p>
-                            <p class="mt-2"><button class="w100 btn-secondary"> Ver más</button></p>
-                        </div>
-                    </div>
-                    <div class="item_table ">
-                        <div class="cont_img d-flex">
-                            <img class="mx-auto" src="https://www.chewboom.com/wp-content/uploads/2019/04/Wendy%E2%80%99s-Offers-A-Free-Small-Fries-And-Drink-With-Any-Premium-Hamburger-Purchase-678x381.jpg">
-                        </div>
-                        <div>
-                            <p class="title_notification mt-3">¡Happy hour 2x1!</p>
-                            <p class="description_notification">Vení con tus amigos y rompete esas pintas tan deseadas ;)</p>
-                            <p class="mt-2"><b>Vence en:</b> <a class="text-danger">3 días</a></p>
-                            <p class="mt-2"><button class="w100 btn-secondary"> Ver más</button></p>
-                        </div>
-                    </div>
+
+
                 </div>
 
             </div>
