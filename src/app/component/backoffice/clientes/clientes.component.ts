@@ -42,7 +42,10 @@ export class ClientesComponent implements OnInit {
   }
 
   sendNotificacion() {
-    this.WebServiceCM.WebServiceFCM(this.tempNotificacion);
+    this.WebServiceCM.WebServiceFCM(this.tempNotificacion)
+    .subscribe(data => {
+      console.log(data.text());
+    });
     this.cliente = null;
     this.resetNotification();
   }

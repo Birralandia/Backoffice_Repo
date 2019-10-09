@@ -26,7 +26,7 @@
 
                             <hr>
                             <p class="py-3 text-center">
-                                <a class="text-info my-2">Recordar</a><a class="ml-3 pb-4 text-danger" (click)="borrarNotificacion(x.uid)">Borrar</a>
+                                <a class="text-info my-2" (click)="sendNotificacion()">Recordar</a><a class="ml-3 pb-4 text-danger" (click)="borrarNotificacion(x.uid)">Borrar</a>
                             </p>
                         </div>
                     </div>
@@ -38,3 +38,5 @@
         </div>
     </div>
 </div>
+
+<app-exito *ngIf="isExito" (cerrar)="isExito = false" [title]="'¡Notificaciones enviadas!'" [descripcion]="'La notificación seleccionada fue enviada a tus clientes.'"></app-exito>

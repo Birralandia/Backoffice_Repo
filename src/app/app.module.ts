@@ -31,6 +31,7 @@ import { ConfiguracionComponent } from './component/backoffice/configuracion/con
 import { NuevoRegistroPromocionComponent } from './component/scancamera/nuevo-registro-promocion/nuevo-registro-promocion.component';
 import { FinanzasComponent } from './component/backoffice/finanzas/finanzas.component';
 import { ProductosComponent } from './component/backoffice/productos/productos.component';
+import { ExitoComponent } from './component/dialog/exito/exito.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ProductosComponent } from './component/backoffice/productos/productos.c
     ConfiguracionComponent,
     NuevoRegistroPromocionComponent,
     FinanzasComponent,
-    ProductosComponent
+    ProductosComponent,
+    ExitoComponent
   ],
   imports: [
     BrowserModule,
