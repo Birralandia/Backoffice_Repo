@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataCloudFirestoreService } from 'src/app/services/get-data-cloud-firestore.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-nuevo-registro',
@@ -15,11 +15,15 @@ export class NuevoRegistroComponent implements OnInit {
   cantidad : number;
   productSelected : any;
   listProducts : any;
-
+  isExito: boolean;
+  puntos?: any;
   constructor(
     private CloudFirestoreDatabase : GetDataCloudFirestoreService,
-    private ActivedRoute : ActivatedRoute
+    private ActivedRoute : ActivatedRoute,
+    private Router : Router
     ) { 
+      this.puntos = 0;
+      this.isExito = false;
       this.clientScanner= {
         email:""
       }
@@ -55,8 +59,9 @@ export class NuevoRegistroComponent implements OnInit {
     })
   }
 
-  agregarVenta(){
-    
+  agregarVenta() {
+    this.isExito = true;
+
     /** Value of product */
     let valorPrecio = 0;
     this.listProducts.forEach(element => {
@@ -76,14 +81,9 @@ export class NuevoRegistroComponent implements OnInit {
       this.clientScanner.puntos = (((valorPrecio*10)/100) * this.cantidad)+this.clientScanner.puntos;
     }
 
-    console.log(this.clientScanner.puntos);
-    console.log((((valorPrecio*10)/100) * this.cantidad));
-    alert("la cantidad: "+ this.cantidad);
-    alert("%"+(valorPrecio*10)/100);
-    alert(this.clientScanner.puntos);
     /** Ultimate payment */
     this.clientScanner.ultimaCompra = fechaHoy;
-
+    this.puntos = this.clientScanner.puntos;
 
     /** Venta register */
     let venta = {
@@ -97,6 +97,10 @@ export class NuevoRegistroComponent implements OnInit {
 
     /** Services Call */
     this.CloudFirestoreDatabase.agregarVenta(venta);
-    this.CloudFirestoreDatabase.agregarPuntos(this.clientScanner);   
+    this.CloudFirestoreDatabase.agregarPuntos(this.clientScanner);
+  }
+  cerrarModal() {
+    this.isExito = false;
+    this.Router.navigateByUrl('/backoffice/dashboard');
   }
 }

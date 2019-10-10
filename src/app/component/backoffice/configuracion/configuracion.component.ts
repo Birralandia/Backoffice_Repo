@@ -12,10 +12,13 @@ export class ConfiguracionComponent implements OnInit {
 
   isEnvios: boolean;
   dataEnvios: any;
+  
+  isExito: boolean;
 
   constructor(
     private CloudFirestoreService: GetDataCloudFirestoreService
   ) {
+    this.isExito = false;
     this.tipo = '';
     this.isEnvios = true;
     this.dataEnvios = {
@@ -24,7 +27,6 @@ export class ConfiguracionComponent implements OnInit {
       status:''
     };
   }
-
   ngOnInit() {
     this.CloudFirestoreService.getEnvios()
     .subscribe(data => {
@@ -40,6 +42,7 @@ export class ConfiguracionComponent implements OnInit {
   }
 
   guardarConfiguracion() {
+    this.isExito = true;
     this.dataEnvios.status = (!this.isEnvios).toString();
     this.CloudFirestoreService.updateEnvios(this.dataEnvios);
     this.tipo = '';

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ComunicateWebServiceService } from 'src/app/services/comunicate-web-service.service';
 import { Notificacion } from 'src/app/interfaces/notificaciones';
 import { GetDataCloudFirestoreService } from 'src/app/services/get-data-cloud-firestore.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nueva-notificacion',
@@ -17,13 +18,15 @@ export class NuevaNotificacionComponent implements OnInit {
   listClients : any[];
   productSelected : string;
   diasFrecuencia : number;
-
+  isExito: boolean;
   productosList : any[];
 
   constructor(
     private CFService : GetDataCloudFirestoreService,
-    private WebServiceFCM : ComunicateWebServiceService
+    private WebServiceFCM : ComunicateWebServiceService,
+    private Router: Router
   ) { 
+    this.isExito = false;
     this.target = "Seleccioná una opción"
     this.notification = {
       token:"",
@@ -112,12 +115,13 @@ export class NuevaNotificacionComponent implements OnInit {
             }
         }
       });
+      
     }
 
-
     this.agregarOferta(fechaHoy);
+    this.isExito = true;
   }
-  
+
   agregarOferta(fechaHoy){
     var oferta = {
       title: this.notification.title,
@@ -148,5 +152,8 @@ export class NuevaNotificacionComponent implements OnInit {
     }else{
       this.Oferta.puntos = null;
     }
+  }
+  cerrarModal(){
+    this.Router.navigateByUrl("/backoffice/notificacion")
   }
 }

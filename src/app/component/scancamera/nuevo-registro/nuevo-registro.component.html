@@ -26,3 +26,5 @@
         </div>
     </div>
 </div>
+
+<app-exito *ngIf="isExito" (cerrar)="cerrarModal()" [title]="'¡Venta agregegada con exito!'" [descripcion]="'La venta se agregó con exito, y se le sumo '+puntos+' puntos a tu cliente ('+clientScanner.nombre+').'"></app-exito>

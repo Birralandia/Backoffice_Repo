@@ -93,3 +93,5 @@
         </div>
     </div>
 </div>
+
+<app-exito *ngIf="isExito" (cerrar)="isExito = false" [title]="'¡Envios configurados!'" [descripcion]="'Los envios se configurarón con extio.'"></app-exito>
